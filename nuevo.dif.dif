@@ -1,0 +1,2 @@
+int c, d; float e, f;
+e=(f+1)*(e*d+(f/6));
