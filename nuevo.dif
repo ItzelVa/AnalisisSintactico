@@ -1,2 +1,2 @@
-char a,b;
+float a,b;
 b=a+b;

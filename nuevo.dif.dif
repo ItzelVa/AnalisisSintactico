@@ -1,2 +1,18 @@
-int c, d; float e, f;
-e=(f+1)*(e*d+(f/6));
+int a,c;
+float b,q;
+a=1;
+b = 1.1 + a ; 
+do 
+	leer ("%i" , a );
+	switch ( a ) 
+	case '1' : 
+	leer ( "%i" , c ); 
+	b = 2 + c;
+	imprimir ( "%i" , b );
+	break; 
+	case '2' : 
+	leer ( "%i" , c ); 
+	imprimir ( "%i" , a);
+	break;
+	endS 
+while ( a < 4 );

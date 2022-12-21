@@ -27,7 +27,12 @@ saltoln=[\r]+
 ( "\n" ) {return Linea;}
 
 /* Palabra reservada */
-( int | char | float ) {lexeme=yytext(); return reservada;}
+( int | char | float | do | while | switch | case | break | imprimir | leer | endS) {lexeme=yytext(); return reservada;}
+
+
+/*Litcar*/
+(['][a-zA-Z]['] | ['][0-9][']) {lexeme=yytext(); return litcar;}
+
 
 /* Error Lexico */
 (-?[0][0]+[0-9]* )  {lexeme=yytext(); return Error_Lexico;}
@@ -39,6 +44,9 @@ saltoln=[\r]+
 /* Numero */
 (([1-9]([0-9])*)|([0]|[1-9]([0-9])*)) {lexeme=yytext(); return num;}
 
+/* Numero Flotantes */
+(-?([0]|([1-9][0-9]*))\.[0-9]*[1-9]([eE][+-][1-9][0-9]*)? ) {lexeme=yytext(); return numf;}
+
 
 /* Símbolos de Agrupación */
 ( "(" | ")" ) {lexeme=yytext(); return parentesis;}
@@ -49,10 +57,22 @@ saltoln=[\r]+
 /* Coma */
 "," {return coma;}
 
+/* leer */
+([\"]"%i"[\"]) {return leeri;}
+
+/* imprimir */
+([\"]"%f"[\"]) {return leerf;}
+
+/*Operadores Relacionales */
+( ">" | "<" | "==") {lexeme = yytext(); return relacional;}
+
 (\'.+\') {lexeme=yytext(); return Error_Lexico;}
 
 /* Operadores de Referencia */
 ( ";" ) {lexeme=yytext(); return puntocoma;}
+
+/* Operadores de Referencia */
+( ":" ) {lexeme=yytext(); return dospuntos;}
 
 /* Identificador */
 {L}({L}|{D})* {lexeme=yytext(); return id;}
