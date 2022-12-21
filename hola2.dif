@@ -1,2 +1,0 @@
-int a,b,c; float d;
-d=a*b+c-a*(b+20);
